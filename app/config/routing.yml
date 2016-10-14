@@ -1,4 +1,7 @@
-user:
-    resource: "@UserController/"
-    type:     annotation
-    prefix:   /
+#user:
+#    resource: "@UserController/"
+#    type:     annotation
+#    prefix:   /
+
+_user_bundle:
+    resource: "@UserBundle/Resources/config/routing.yml"
