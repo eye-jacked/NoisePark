@@ -19,9 +19,52 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Thread", mappedBy="user")
+     */
+    private $thread = null;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Thread", mappedBy="user")
+     */
+    private $post = null;
+
     public function __construct()
     {
         parent::__construct();
         // your own logic
+    }
+
+    /**
+     * Add thread
+     *
+     * @param \UserBundle\Entity\Thread $thread
+     * @return User
+     */
+    public function addThread(\UserBundle\Entity\Thread $thread)
+    {
+        $this->thread[] = $thread;
+
+        return $this;
+    }
+
+    /**
+     * Remove thread
+     *
+     * @param \UserBundle\Entity\Thread $thread
+     */
+    public function removeThread(\UserBundle\Entity\Thread $thread)
+    {
+        $this->thread->removeElement($thread);
+    }
+
+    /**
+     * Get thread
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getThread()
+    {
+        return $this->thread;
     }
 }

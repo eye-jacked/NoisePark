@@ -1,0 +1,51 @@
+<?php
+// src/userBundle/Entity/Thread.php
+
+namespace UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="rst_threads")
+ */
+class Thread
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $text;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $subject;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $timeCreation;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="thread")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $user;
+
+
+
+
+
+
+
+    public function __construct()
+    {
+    }
+}
